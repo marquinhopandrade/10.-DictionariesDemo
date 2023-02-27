@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
+
 namespace DictionariesDemo
 {
     internal class Program
@@ -25,6 +27,20 @@ namespace DictionariesDemo
             {
                 employeesDirectory.Add(emp.Role, emp);
             }
+            for (int i = 0; i < employeesDirectory.Count; i++)
+            {
+                //using ElementAt(i) to return the key-value pair stored at index i
+                KeyValuePair<string, Employee> keyValuePair = employeesDirectory.ElementAt(i);
+                //print the key
+                Console.WriteLine("Key: {0}", keyValuePair.Key);
+                //storing the value in an employee object
+                Employee employeeValue = keyValuePair.Value;
+                //printing the properties of the employee object
+                Console.WriteLine("Employee Name: {0}", employeeValue.Name);
+                Console.WriteLine("Employee Role: {0}", employeeValue.Role);
+                Console.WriteLine("Employee Age: {0}", employeeValue.Age);
+                Console.WriteLine("Employee Salary: {0}", employeeValue.Salary);
+            }
             string key = "CEO";
             if (employeesDirectory.ContainsKey(key))
             {
@@ -33,9 +49,25 @@ namespace DictionariesDemo
             }
             else
             {
-                Console.WriteLine("No employee found with this key {0}", key) ;
+                Console.WriteLine("No employee found with this key {0}", key);
             }
-;
+            Employee result = null;
+            //using TryGetValue() it returns true if the operation was successful and false otherwise
+            /*
+            if (employeesDirectory.TryGetValue("Intern", out result))
+            {
+                Console.WriteLine("Value Retrieved!.");
+
+                Console.WriteLine("Employee Name: {0}", result.Name);
+                Console.WriteLine("Employee Role: {0}", result.Role);
+                Console.WriteLine("Employee Age: {0}", result.Age);
+                Console.WriteLine("Employee Salary: {0}", result.Salary);
+            }
+            else
+            {
+                Console.WriteLine("The key does not exist");
+            }
+            */
         }
     }
 }
