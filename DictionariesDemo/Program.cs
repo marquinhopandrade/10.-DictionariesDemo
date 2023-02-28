@@ -16,7 +16,7 @@ namespace DictionariesDemo
                 new Employee("Lead Developer","Artorias",55,35),
                 new Employee("Intern","Ernerst",22,8),
             };
-            Dictionary<int, string> myDictionary = new Dictionary<int, string>(){            
+            Dictionary<int, string> myDictionary = new Dictionary<int, string>()  {            
                 { 1, "one"},            
                 { 2, "two"},
                 { 3, "three"},
@@ -32,7 +32,7 @@ namespace DictionariesDemo
                 //using ElementAt(i) to return the key-value pair stored at index i
                 KeyValuePair<string, Employee> keyValuePair = employeesDirectory.ElementAt(i);
                 //print the key
-                Console.WriteLine("Key: {0}", keyValuePair.Key);
+                Console.WriteLine("Key: {0}, i is {1}", keyValuePair.Key, i);
                 //storing the value in an employee object
                 Employee employeeValue = keyValuePair.Value;
                 //printing the properties of the employee object
@@ -40,8 +40,10 @@ namespace DictionariesDemo
                 Console.WriteLine("Employee Role: {0}", employeeValue.Role);
                 Console.WriteLine("Employee Age: {0}", employeeValue.Age);
                 Console.WriteLine("Employee Salary: {0}", employeeValue.Salary);
+                Console.WriteLine("--------------------------------");
             }
-            string key = "CEO";
+            Console.WriteLine("Type your role in the enterprise:");
+            string key = Convert.ToString(Console.ReadLine());
             if (employeesDirectory.ContainsKey(key))
             {
                 Employee empl = employeesDirectory[key];
@@ -51,9 +53,9 @@ namespace DictionariesDemo
             {
                 Console.WriteLine("No employee found with this key {0}", key);
             }
-            Employee result = null;
             //using TryGetValue() it returns true if the operation was successful and false otherwise
             /*
+            Employee result = null;
             if (employeesDirectory.TryGetValue("Intern", out result))
             {
                 Console.WriteLine("Value Retrieved!.");
